@@ -4,7 +4,7 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 
-from APPNP import APPNP
+from DAGNN import DAGNN
 from util import load_data, accuracy
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
@@ -12,17 +12,16 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 # 参数配置
 lr = 0.01
 weight_decay = 5e-4
-hidden = 16
+hidden = 64
 idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
-dropout = 0.3
-k = 4
-alpha = 0.2
+dropout = 0.8
+k = 12
 
 adj_matrix, features, labels = load_data()
 
-model = APPNP(features=features.shape[1], hidden=hidden, alpha=alpha, classes=labels.max().item() + 1, k=k,
+model = DAGNN(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, k=k,
               dropout=dropout)
 
 optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
@@ -62,7 +61,7 @@ def test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-for epoch in range(300):
+for epoch in range(1500):
     train(epoch)
 
 test()
