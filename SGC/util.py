@@ -7,7 +7,7 @@ def load_data():
     # 导入数据：分隔符为空格
     # cora.content共有2708行，每一行代表一个样本点，即一篇论文。
     # 每一行由三部分组成，分别是论文的编号，如31336；论文的词向量，一个有1433位的二进制；论文的类别，如Neural_Networks
-    raw_data = pd.read_csv('data/cora/cora.content', sep='\t', header=None)
+    raw_data = pd.read_csv('../data/cora/cora.content', sep='\t', header=None)
     num = raw_data.shape[0]  # 样本点数2708
     # 将论文的编号转[0,2707]
     # 索引列表
@@ -21,7 +21,7 @@ def load_data():
     labels = pd.get_dummies(raw_data[1434])
     # 论文引用数据
     # cora.cites共5429行， 每一行有两个论文编号，表示第一个编号的论文先写，第二个编号的论文引用第一个编号的论文
-    raw_data_cites = pd.read_csv('data/cora/cora.cites', sep='\t', header=None)
+    raw_data_cites = pd.read_csv('../data/cora/cora.cites', sep='\t', header=None)
     # 创建一个规模和邻接矩阵一样大小的矩阵(2708, 2708)
     adj_matrix = np.zeros((num, num))
     # 创建邻接矩阵
