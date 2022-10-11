@@ -61,7 +61,7 @@ def test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-for epoch in range(1500):
+for epoch in range(500):
     train(epoch)
 
 test()

@@ -13,10 +13,10 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 hidden = 16
 lr = 0.01
 weight_decay = 5e-4
-idx_train = range(140)
+idx_train = range(150)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
-dropout = 0.5
+dropout = 0.6
 
 adj_matrix, features, labels = load_data()
 

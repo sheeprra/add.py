@@ -16,8 +16,8 @@ hidden = 16
 idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
-dropout = 0.3
-k = 4
+dropout = 0.4
+k = 6
 alpha = 0.2
 
 adj_matrix, features, labels = load_data()

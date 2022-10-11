@@ -15,8 +15,9 @@ class GATLayer(nn.Module):
         self.w = Parameter(torch.FloatTensor(input_feature, output_feature))
         self.a = Parameter(torch.FloatTensor(2 * output_feature, 1))
         # 初始化权重
-        nn.init.xavier_uniform_(self.w, gain=1)
-        nn.init.xavier_uniform_(self.a, gain=0.5)
+        nn.init.xavier_uniform_(self.w, gain=1.414)
+        nn.init.xavier_uniform_(self.a, gain=1.414)
+        self.leaky_relu = nn.LeakyReLU(0.2)
 
     def forward(self, h, adj):
         # Wh.shape (N, out_feature)
@@ -33,4 +34,4 @@ class GATLayer(nn.Module):
         Wh2 = torch.matmul(Wh, self.a[self.output_feature:, :])
         # e.shape (N, N)
         e = Wh1 + Wh2.T  # 构建自身的邻接矩阵
-        return F.leaky_relu(e)
+        return self.leaky_relu(e)

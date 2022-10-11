@@ -20,7 +20,7 @@ dropout = 0.5
 
 adj_matrix, features, labels = load_data()
 
-model = GCN(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, dropout=None)
+model = GCN(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, dropout=dropout)
 
 optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
 
@@ -59,7 +59,7 @@ def test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-for epoch in range(500):
+for epoch in range(1000):
     train(epoch)
 
 test()
