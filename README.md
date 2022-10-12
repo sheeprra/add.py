@@ -6,3 +6,4 @@
 * APPNP
 * DAGNN
 * GCNII
+* GNN-LF-HF
