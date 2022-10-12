@@ -18,11 +18,11 @@ class GCC(nn.Module):
         )
 
     def forward(self, X, adj):
-        H1 = X
         H = X
+        H1 = X
         for index, layer in enumerate(self.layers):
             if index == 0:
-                H = layer(X, H1, H, adj)
+                H = layer(X, X, H, adj)
             if index == 1:
                 H1 = H
                 H = layer(X, X, H, adj)

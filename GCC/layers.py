@@ -19,7 +19,6 @@ class GCCLayer(nn.Module):
         nn.init.xavier_uniform_(self.weight, gain=1.4)
 
     def forward(self, X, H1, H2, adj):
-        AH = torch.mm(adj, X)
-        HAW = torch.mm(AH, self.weight)
-        H = HAW + self.yt * X + self.kt * (H2 - H1)
+        H = torch.mm(adj, (1 - self.yt) * H2) + self.yt * X + self.kt * (H2 - H1)
+        H = torch.mm(H, self.weight)
         return F.relu(H)

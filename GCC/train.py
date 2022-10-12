@@ -12,9 +12,9 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 # 参数配置
 lr = 0.001
 weight_decay = 5e-4
-idx_train = range(140)
-idx_val = range(200, 500)
-idx_test = range(500, 1500)
+idx_train = range(1200)
+idx_val = range(1200, 1600)
+idx_test = range(1600, 2000)
 dropout = 0.4
 k = 8
 yt = 0.1
