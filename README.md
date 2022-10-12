@@ -5,3 +5,4 @@
 * GAT
 * APPNP
 * DAGNN
+* GCNII
