@@ -20,8 +20,9 @@ dropout = 0.6
 alpha = 0.1
 lamda = 0.5
 k = 16
-
-adj_matrix, features, labels = load_data()
+# 数据集为cora或citeseer
+dataset = 'cora'
+adj_matrix, features, labels = load_data(dataset)
 
 model = GCNII(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, k=k,
               dropout=dropout, alpha=alpha, lamda=lamda, )

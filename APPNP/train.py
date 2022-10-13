@@ -12,15 +12,16 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 # 参数配置
 lr = 0.01
 weight_decay = 5e-4
-hidden = 16
+hidden = 64
 idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
-dropout = 0.4
-k = 6
-alpha = 0.2
-
-adj_matrix, features, labels = load_data()
+dropout = 0.5
+k = 10
+alpha = 0.1
+# 数据集为cora或citeseer
+dataset = 'cora'
+adj_matrix, features, labels = load_data(dataset)
 
 model = APPNP(features=features.shape[1], hidden=hidden, alpha=alpha, classes=labels.max().item() + 1, k=k,
               dropout=dropout)
@@ -62,7 +63,7 @@ def test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-for epoch in range(300):
+for epoch in range(200):
     train(epoch)
 
 test()

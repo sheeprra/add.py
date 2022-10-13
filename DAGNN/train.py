@@ -18,8 +18,9 @@ idx_val = range(200, 500)
 idx_test = range(500, 1500)
 dropout = 0.8
 k = 12
-
-adj_matrix, features, labels = load_data()
+# 数据集为cora或citeseer
+dataset = 'cora'
+adj_matrix, features, labels = load_data(dataset)
 
 model = DAGNN(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, k=k,
               dropout=dropout)

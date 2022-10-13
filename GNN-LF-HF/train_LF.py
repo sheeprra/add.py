@@ -20,7 +20,9 @@ dropout = 0.6
 alpha = 0.1
 mu = 0.9
 
-adj_matrix, features, labels = load_data()
+# 数据集为cora或citeseer
+dataset = 'cora'
+adj_matrix, features, labels = load_data(dataset)
 
 model = GNNLF(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1,
               dropout=dropout, alpha=alpha, mu=mu)

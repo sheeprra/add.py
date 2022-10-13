@@ -20,7 +20,9 @@ k = 8
 yt = 0.1
 kt = 0.2
 
-adj_matrix, features, labels = load_data()
+# 数据集为cora或citeseer
+dataset = 'cora'
+adj_matrix, features, labels = load_data(dataset)
 
 model = GCC(features=features.shape[1], classes=labels.max().item() + 1, k=k,
             dropout=dropout, yt=yt, kt=kt)

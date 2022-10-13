@@ -13,12 +13,14 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 hidden = 16
 lr = 0.01
 weight_decay = 5e-4
-idx_train = range(150)
+idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
 dropout = 0.6
+# 数据集为cora或citeseer
+dataset = 'cora'
 
-adj_matrix, features, labels = load_data()
+adj_matrix, features, labels = load_data(dataset)
 
 model = SGC(input_feature=features.shape[1], output_feature=labels.max().item() + 1, k=2)
 

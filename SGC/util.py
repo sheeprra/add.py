@@ -3,31 +3,35 @@ import pandas as pd
 import torch
 
 
-def load_data():
+def load_data(dataset):
     # 导入数据：分隔符为空格
     # cora.content共有2708行，每一行代表一个样本点，即一篇论文。
-    # 每一行由三部分组成，分别是论文的编号，如31336；论文的词向量，一个有1433位的二进制；论文的类别，如Neural_Networks
-    raw_data = pd.read_csv('../data/cora/cora.content', sep='\t', header=None)
-    num = raw_data.shape[0]  # 样本点数2708
-    # 将论文的编号转[0,2707]
+    # cora 每一行由三部分组成，分别是论文的编号，如31336；论文的词向量，一个有1433位的二进制；论文的类别，如Neural_Networks
+    # citeseer.content共有3312行，每一行代表一个样本点，即一篇论文。
+    # citeseer中存在孤立点，已经删除
+    raw_data = pd.read_csv(f'../data/{dataset}/{dataset}.content', sep='\t', header=None, low_memory=False)
+    num = raw_data.shape[0]  # cora样本点数2708、citeseer样本点数3312
     # 索引列表
     index_list = list(raw_data.index)
     # 论文编号列表
     id_list = list(raw_data[0])
+    if dataset == 'citeseer':
+        id_list = [str(i) for i in id_list]
     id_index = zip(id_list, index_list)
     id_index_map = dict(id_index)
-    # 将词向量提取为特征,第二行到倒数第二行  (2708, 1433)
+    # 将词向量提取为特征,第二行到倒数第二行
     features = raw_data.iloc[:, 1:-1]
-    labels = pd.get_dummies(raw_data[1434])
+    labels = pd.get_dummies(raw_data[raw_data.shape[1] - 1])
     # 论文引用数据
     # cora.cites共5429行， 每一行有两个论文编号，表示第一个编号的论文先写，第二个编号的论文引用第一个编号的论文
-    raw_data_cites = pd.read_csv('../data/cora/cora.cites', sep='\t', header=None)
+    # citeseer.cites共4732行， 每一行有两个论文编号，表示第一个编号的论文先写，第二个编号的论文引用第一个编号的论文
+    raw_data_cites = pd.read_csv(f'../data/{dataset}/{dataset}.cites', sep='\t', header=None)
     # 创建一个规模和邻接矩阵一样大小的矩阵(2708, 2708)
     adj_matrix = np.zeros((num, num))
     # 创建邻接矩阵
     for thesis, cite_thesis in zip(raw_data_cites[0], raw_data_cites[1]):
         thesis_index = id_index_map[thesis]
-        cite_thesis_index = id_index_map[cite_thesis]  # 替换论文编号为[0,2707]
+        cite_thesis_index = id_index_map[cite_thesis]
         adj_matrix[thesis_index][cite_thesis_index] = adj_matrix[cite_thesis_index][thesis_index] = 1  # 有引用关系的样本点之间取1
 
     # 归一化邻接矩阵

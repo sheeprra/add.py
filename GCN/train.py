@@ -10,15 +10,17 @@ from util import load_data, accuracy
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 # 参数配置
-hidden = 16
+hidden = 32
 lr = 0.01
 weight_decay = 5e-4
 idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
 dropout = 0.5
+# 数据集为cora或citeseer
+dataset = 'cora'
 
-adj_matrix, features, labels = load_data()
+adj_matrix, features, labels = load_data(dataset)
 
 model = GCN(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, dropout=dropout)
 
@@ -59,7 +61,7 @@ def test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-for epoch in range(1000):
+for epoch in range(500):
     train(epoch)
 
 test()

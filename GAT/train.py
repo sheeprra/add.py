@@ -10,16 +10,19 @@ from util import load_data, accuracy
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 # 参数配置
-heads = 6
+heads = 8
 lr = 0.01
 hidden = 8
 weight_decay = 5e-4
 idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
-dropout = 0.5
+dropout = 0.6
 
-adj_matrix, features, labels = load_data()
+# 数据集为cora或citeseer
+dataset = 'cora'
+
+adj_matrix, features, labels = load_data(dataset)
 
 model = GAT(features=features.shape[1], hidden=hidden, classes=labels.max().item() + 1, heads=heads, dropout=dropout)
 
