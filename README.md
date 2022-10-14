@@ -31,3 +31,6 @@
 #### GCC
 
 > 《Why Do Attributes Propagate in Graph Convolutional Neural Networks?》
+
+#### JKNet
+> 《Representation Learning on Graphs with Jumping Knowledge Networks》
