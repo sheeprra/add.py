@@ -10,7 +10,6 @@ from util import load_data, accuracy
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 # 参数配置
-hidden = 16
 lr = 0.01
 weight_decay = 5e-4
 idx_train = range(140)
