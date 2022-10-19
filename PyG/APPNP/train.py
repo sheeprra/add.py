@@ -1,18 +1,19 @@
 import torch
 import torch.nn.functional as F
-import torch_geometric.transforms as T
-from GCN import GCN
+
+from APPNP import Net
 from util import load_dataset
 
 name = 'Cora'
-hidden = 32
 lr = 0.01
+dropout = 0.5
 weight_decay = 5e-4
+k = 10
+alpha = 0.1
+hidden = 64
 
 dataset = load_dataset(name)
-dataset.transform = T.NormalizeFeatures()
-
-model = GCN(dataset.num_node_features, hidden, dataset.num_classes)
+model = Net(k, alpha, dropout, dataset.num_node_features, hidden, dataset.num_classes)
 data = dataset[0]
 
 if torch.cuda.is_available():
