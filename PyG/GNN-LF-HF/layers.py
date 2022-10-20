@@ -1,10 +1,10 @@
 import torch
-from torch_geometric.nn import MessagePassing
+from torch.nn import Module
 
 from util import norm_Adj
 
 
-class GNNHFConv(MessagePassing):
+class GNNHFConv(Module):
     def __init__(self, alpha, beta):
         super(GNNHFConv, self).__init__()
         self.alpha = alpha
@@ -19,7 +19,7 @@ class GNNHFConv(MessagePassing):
         return torch.matmul(torch.linalg.inv(pre), res)
 
 
-class GNNLFConv(MessagePassing):
+class GNNLFConv(Module):
     def __init__(self, alpha, mu):
         super(GNNLFConv, self).__init__()
         self.alpha = alpha
