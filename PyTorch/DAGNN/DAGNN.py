@@ -17,6 +17,7 @@ class DAGNN(nn.Module):
             nn.Linear(hidden, classes),
         )
 
+        # self.s = Parameter(torch.FloatTensor(classes, classes))
         self.s = Parameter(torch.FloatTensor(classes, 1))
         nn.init.xavier_uniform_(self.s, gain=1.414)
 
@@ -27,6 +28,9 @@ class DAGNN(nn.Module):
             H = torch.mm(adj, H)
             matrix_list.append(H)
         H = torch.stack(matrix_list, dim=1)
+        # 注解部分另一种思路，将堆叠的求平均再输出
+        # H = torch.mean(H, dim=1)
+        # X_out=torch.matmul(H, self.s)
         S = F.sigmoid(torch.matmul(H, self.s))
         S = S.transpose(1, 2)
         X_out = torch.squeeze(torch.matmul(S, H))
