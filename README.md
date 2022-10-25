@@ -34,3 +34,6 @@
 
 #### JKNet
 > 《Representation Learning on Graphs with Jumping Knowledge Networks》
+
+#### EvenNet
+> 《EvenNet: Ignoring Odd-Hop Neighbors Improves Robustness of Graph Neural Networks》
