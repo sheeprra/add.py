@@ -5,9 +5,9 @@ from torch_geometric.nn import MessagePassing
 from torch_geometric.nn.conv.gcn_conv import gcn_norm
 
 
-class GRPLayer(MessagePassing):
+class GPRLayer(MessagePassing):
     def __init__(self, K, alpha):
-        super(GRPLayer, self).__init__()
+        super(GPRLayer, self).__init__()
         self.K = K
         self.alpha = alpha
         # 权重

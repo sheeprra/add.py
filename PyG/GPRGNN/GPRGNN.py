@@ -1,7 +1,7 @@
 import torch.nn.functional as F
 from torch import nn
 
-from layers import GRPLayer
+from layers import GPRLayer
 
 
 class GPRGNN(nn.Module):
@@ -16,7 +16,7 @@ class GPRGNN(nn.Module):
         )
         self.dprate = dprate
         self.dropout = dropout
-        self.conv = GRPLayer(K, alpha)
+        self.conv = GPRLayer(K, alpha)
 
     def forward(self, data):
         x, edge_index = data.x, data.edge_index
