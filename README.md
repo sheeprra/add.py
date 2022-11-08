@@ -37,3 +37,6 @@
 
 #### EvenNet
 > 《EvenNet: Ignoring Odd-Hop Neighbors Improves Robustness of Graph Neural Networks》
+
+#### GRPGNN
+> 《ADAPTIVE UNIVERSAL GENERALIZED PAGERANK GRAPH NEURAL NETWORK》
