@@ -40,3 +40,6 @@
 
 #### GPRGNN
 > 《ADAPTIVE UNIVERSAL GENERALIZED PAGERANK GRAPH NEURAL NETWORK》
+
+#### FAGCN
+> 《Beyond Low-frequency Information in Graph Convolutional Networks》
