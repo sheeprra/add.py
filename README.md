@@ -43,3 +43,6 @@
 
 #### FAGCN
 > 《Beyond Low-frequency Information in Graph Convolutional Networks》
+
+### H2GCN
+> 《Beyond Homophily in Graph Neural Networks: Current Limitations and Effective Designs》
