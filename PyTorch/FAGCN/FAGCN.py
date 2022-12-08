@@ -23,7 +23,7 @@ class FAGCN(nn.Module):
         h = self.MLP(h)
         h0 = h
         for layer in self.layers:
-            h = layer(h, adj,deg)
+            h = layer(h, adj, deg)
             h = self.eps * h0 + h
         output = self.last_layer(h)
         return F.log_softmax(output, dim=1)
