@@ -46,3 +46,6 @@
 
 ### H2GCN
 > 《Beyond Homophily in Graph Neural Networks: Current Limitations and Effective Designs》
+
+### SSGC
+> 《SIMPLE SPECTRAL GRAPH CONVOLUTION》
