@@ -49,3 +49,6 @@
 
 ### SSGC
 > 《SIMPLE SPECTRAL GRAPH CONVOLUTION》
+
+### SuperGAT
+> 《How to Find Your Friendly Neighborhood: Graph Attention Design with Self-Supervision》
