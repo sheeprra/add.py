@@ -12,7 +12,7 @@ class SGC(nn.Module):
         # 输出特征
         self.output_feature = output_feature
         # 权重
-        self.weight=Parameter(torch.FloatTensor(input_feature, output_feature))
+        self.weight = Parameter(torch.FloatTensor(input_feature, output_feature))
         # 初始化权重
         nn.init.xavier_uniform_(self.weight, gain=1)
         # k times

@@ -52,3 +52,6 @@
 
 ### SuperGAT
 > 《How to Find Your Friendly Neighborhood: Graph Attention Design with Self-Supervision》
+
+### AKGNN
+> 《Adaptive Kernel Graph Neural Network》
