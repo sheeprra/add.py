@@ -55,3 +55,6 @@
 
 ### AKGNN
 > 《Adaptive Kernel Graph Neural Network》
+
+### Graph-MLP
+> 《Graph-MLP: Node Classification without Message Passing in Graph》
